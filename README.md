@@ -6,7 +6,7 @@ Presentation remote pager via Web MIDI API
 Midisentation is a presentation remote pager tool.
 It sends control messages to [reveal.js](http://lab.hakim.se/reveal-js/) via [Web MIDI API](http://www.w3.org/TR/webmidi/).
 
-![image](images/thumb.png)
+![image](images/thumb.jpg)
 
 ##FEATURES
 - remote paging forward/backward
