@@ -1,0 +1,78 @@
+body {
+  background-color: #2a2a2a;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: lighter;
+  color: #f8f8f8;
+  text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 20px #fff;
+}
+
+#head {
+  margin: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 105px;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
+.boxcontainer {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: box;
+  display: -webkit-box;
+  box-pack: justify;
+  -webkit-box-pack: justify;
+}
+
+.box {
+  margin-top: 8px;
+  width: 47%;
+  height: 270px;
+  border-radius: 5px;
+  font-size: 70px;
+  text-align: center;
+  padding-top: 130px;
+  cursor: default;
+
+  background: -webkit-gradient(radial, center center, 20, center center, 150, from(#aaaacc), to(#7777aa));
+  box-shadow: 0 0 15px #44b, 0 0 25px #77e;
+}
+
+#timercontainer {
+  -webkit-user-select: none;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: default;
+  width: 220px;
+  height: 80px;
+  font-size: 70px;
+}
+
+#minute {
+  float: left;
+  margin-left: 0px;
+  width: 100px;
+  height: 80px;
+}
+
+#second {
+  float: left;
+  margin-left: -2px;
+  width: 100px;
+  height: 80px;
+}
+
+#colon {
+  float: left;
+  margin-top: -6px;
+  margin-left: -2px;
+  width: 20px;
+  height: 80px;
+}
+
+
