@@ -14,7 +14,7 @@ It sends control messages to [reveal.js](http://lab.hakim.se/reveal-js/) via [We
 - bluetooth pairing condition monitor
 
 ##WEBSITE
-http://aikelab.net/midisentation/ 
+http://aikelab.net/midisentation/  
 http://github.com/aike/midisentation
 
 ##SYSTEM REQUIREMENT
