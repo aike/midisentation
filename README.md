@@ -22,5 +22,5 @@ Midisentation requires the web browser which supports Web MIDI API. (ex. [Web MI
 
 ##CREDIT
 Midisentation program is licenced under MIT License.  
-Programming and GUI Design: aike
+Programming and GUI Design: aike  
 Contact: twitter @aike1000
