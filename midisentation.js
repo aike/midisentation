@@ -15,6 +15,12 @@
     click = "mousedown";
   }
 
+  // mode 0: note on 59 / note on 60
+  // mode 1: note on 60 / note off 60
+  var mode = 0;
+
+  var activeSensing = false;
+
   var midi = null;
   var inputs = [];
   var outputs = [];
@@ -43,17 +49,17 @@
     alert("Midi Failure: " + msg);
   }
 
-  function noteOn() {
+  function noteOn(nn) {
     var it = midi.outputs.values();
     for (var o = it.next(); !o.done; o = it.next()) {
-      o.value.send([0x90, 100, 0x40] , window.performance.now() );
+      o.value.send([0x90, nn, 0x40] , window.performance.now() );
     }
   }
   
-  function noteOff() {
+  function noteOff(nn) {
     var it = midi.outputs.values();
     for (var o = it.next(); !o.done; o = it.next()) {
-      o.value.send([0x80, 100, 0x00] , window.performance.now() );
+      o.value.send([0x80, nn, 0x00] , window.performance.now() );
     }
   }
 
@@ -85,10 +91,19 @@
   var div;
   div = document.querySelector("#left");
   div.addEventListener(click, colorResponse, false);
-  div.addEventListener(click, noteOn, false);
+  if (mode === 0) {
+    div.addEventListener(click, function() { noteOn(59); }, false);
+  } else {
+    div.addEventListener(click, function() { noteOn(60); }, false);    
+  }
+
   div = document.querySelector("#right");
   div.addEventListener(click, colorResponse, false);
-  div.addEventListener(click, noteOff, false);
+  if (mode === 0) {
+    div.addEventListener(click, function() { noteOn(60); }, false);
+  } else {
+    div.addEventListener(click, function() {noteOff(60); }, false);    
+  }
 
   //////////////////////////////////
   var connectStatus = false;
@@ -97,7 +112,7 @@
   var head = document.querySelector("#head");
 
   function updateIndicator() {
-      if (connectStatus) {
+      if (connectStatus || !activeSensing) {
         head.style.background = '-webkit-gradient(radial, center center, 20, center center, 150, from(#9999bb), to(#7777aa))';
         head.style.boxShadow = '0 0 10px #44b, 0 0 15px #77e';
       } else {
@@ -109,15 +124,16 @@
 
   updateIndicator();
 
-  setInterval(function() {
-    if (Date.now() - lastActiveSensing > 3000) {
-      connectStatus = false;
-    }
-    if (connectStatus != lastConnectStatus) {
-      updateIndicator();
-    }
-  }, 1000);
-
+  if (activeSensing) {
+    setInterval(function() {
+      if (Date.now() - lastActiveSensing > 3000) {
+        connectStatus = false;
+      }
+      if (connectStatus != lastConnectStatus) {
+        updateIndicator();
+      }
+    }, 1000);
+  }
 
   //////////////////////////////////
 
